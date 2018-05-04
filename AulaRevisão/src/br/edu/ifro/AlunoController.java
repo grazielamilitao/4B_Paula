@@ -42,10 +42,10 @@ public class AlunoController implements Initializable {
     private void abrirCadastroAluno(ActionEvent event) {
         try{
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("Cliente.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("Aluno.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),900,682);
         Stage stage = new Stage();
-        stage.setTitle("Cadastrar Cliente");
+        stage.setTitle("Cadastrar Aluno");
         stage.setScene(scene);
         stage.show();
     }
