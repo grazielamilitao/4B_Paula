@@ -15,11 +15,11 @@ import javafx.stage.Stage;
  *
  * @author Graziela
  */
-public class AulaRevisão extends Application {
+public class Calculadora extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Calculadora.fxml"));
         
         Scene scene = new Scene(root);
         
