@@ -7,12 +7,12 @@ import javax.persistence.Id;
 
 @Entity
 public class Aluno {
-    @Id
-    private Integer id;
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String nome;
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -20,7 +20,7 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 

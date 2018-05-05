@@ -19,10 +19,11 @@ public class App extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Aluno.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Calculadora.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setTitle("Calculadora");
     }
 
     /**

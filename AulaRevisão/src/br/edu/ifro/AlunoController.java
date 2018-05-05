@@ -5,6 +5,7 @@
  */
 package br.edu.ifro;
 
+import br.edu.ifro.modelo.Aluno;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -16,6 +17,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  * FXML Controller class
@@ -25,13 +29,11 @@ import java.io.IOException;
 public class AlunoController implements Initializable {
 
     @FXML
-    private JFXTextField id;
+    private JFXTextField txtNome;
     @FXML
-    private JFXTextField nome;
+    private JFXButton btnCadastrar;
     @FXML
-    private JFXTextField contato;
-    @FXML
-    private JFXButton cadastrar;
+    private JFXButton btnFechar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -39,23 +41,24 @@ public class AlunoController implements Initializable {
     }    
 
     @FXML
-    private void abrirCadastroAluno(ActionEvent event) {
-        try{
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("Aluno.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),900,682);
-        Stage stage = new Stage();
-        stage.setTitle("Cadastrar Aluno");
-        stage.setScene(scene);
-        stage.show();
-    }
-        catch(IOException e){
-
-}
+    private void salvar(ActionEvent event) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("aulaRevisão");
+        EntityManager em = emf.createEntityManager();
+        
+        Aluno aluno = new Aluno();
+        aluno.setNome(txtNome.getText());
+        
+        em.getTransaction().begin();
+        
+        em.persist(aluno);
+        
+        em.getTransaction().commit();
     }
 
     @FXML
-    private void fecharProjeto(ActionEvent event) {
+    private void fechar(ActionEvent event) {
+        Stage stage = (Stage) txtNome.getScene().getWindow();
+        stage.close();
     }
     
 }
